@@ -358,7 +358,7 @@ void pongo_entry(uint64_t *kernel_args, void *entryp, void (*exit_to_el1_image)(
     rebase_pc(-gPongoSlide);
     set_exception_stack_core0();
     gFramebuffer = (uint32_t*)gBootArgs->Video.v_baseAddr;
-    lowlevel_cleanup();
+    //lowlevel_cleanup();
     apply_tunables();
     if(gBootFlag == BOOT_FLAG_RAW)
     {
