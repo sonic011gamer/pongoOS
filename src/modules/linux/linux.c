@@ -173,7 +173,7 @@ int linux_dtree_overlay(char *boot_args)
     }
     fdt_appendprop_addrrange(fdt, 0, node1, "reg", gBootArgs->Video.v_baseAddr, fb_size);
     fdt_appendprop(fdt, node1, "no-map", "", 0);
-    iprintf("gBootArgs->physBase = %X", gBootArgs->physBase);
+    iprintf("gBootArgs->physBase = %llX", gBootArgs->physBase);
     if (gBootArgs->physBase > 0x800000000)
     {
         /* Reserve TZ/low FW regions and such */
@@ -310,7 +310,7 @@ void linux_prep_boot()
     reg = dt_prop(memmap, "SEPFW", NULL);
     if (reg)
     {
-        iprintf("sepfw reg[0] %X, reg[1] %X", reg[0], reg[1]);
+        iprintf("sepfw reg[0] %llX, reg[1] %llX", reg[0], reg[1]);
         ret = fdt_add_mem_rsv(fdt, reg[0], reg[1]);
         if (ret < 0) {
             iprintf("Failed to reserve SEPFW region!");
