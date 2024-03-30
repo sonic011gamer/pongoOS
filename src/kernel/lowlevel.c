@@ -101,7 +101,7 @@ __asm__(
     "    msr ttbr1_el1, x3\n"
     "    isb sy\n"
     "    mrs x3, sctlr_el1\n"
-    "    orr x0, x0, #CTRL_M_BIT"
+    "    orr x0, x0, #CTRL_M_BIT\n"
     "    tlbi vmalle1\n"
     "    isb sy\n"
     "    ic iallu\n"
