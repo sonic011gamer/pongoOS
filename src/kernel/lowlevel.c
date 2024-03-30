@@ -30,6 +30,7 @@ uint64_t gPMGRBase;
 uint64_t gWDTBase;
 
 __asm__(
+    ".set CTRL_M_BIT,      (1 << 0)"
     ".globl _get_el\n"
     ".globl _rebase_pc\n"
     ".globl _set_vbar_el1\n"
@@ -100,10 +101,7 @@ __asm__(
     "    msr ttbr1_el1, x3\n"
     "    isb sy\n"
     "    mrs x3, sctlr_el1\n"
-    "    orr x3, x3, #1\n"
-    "    orr x3, x3, #4\n"
-    "    orr x3, x3, #0x800000\n" // enable SPAN if possible
-    "    and x3, x3, #(~2)\n"
+    "    orr x0, x0, #CTRL_M_BIT"
     "    tlbi vmalle1\n"
     "    isb sy\n"
     "    ic iallu\n"
