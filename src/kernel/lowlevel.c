@@ -30,7 +30,7 @@ uint64_t gPMGRBase;
 uint64_t gWDTBase;
 
 __asm__(
-    ".set CTRL_M_BIT,      (1 << 0)"
+    ".set CTRL_M_BIT,      (1 << 0)\n"
     ".globl _get_el\n"
     ".globl _rebase_pc\n"
     ".globl _set_vbar_el1\n"
